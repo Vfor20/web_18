@@ -7,6 +7,7 @@ var concat = require("gulp-concat"); // Об'єднання файлів - ко�
 var uglify = require("gulp-uglify"); // Мінімізація JavaScript
 var rename = require("gulp-rename"); // Перейменування файлів
 var imagemin = require('gulp-imagemin'); // Стиснення зображень
+var browserSync = require('browser-sync').create();
 
 // Створюємо тестовий таск
 gulp.task('testTask', function(done) {
@@ -25,8 +26,8 @@ gulp.task("html", function () {
 
 // об'єднання, компіляція Sass в CSS, додавання префіксів і подальша мінімізація коду
 gulp.task("sass", function () {
-    return gulp.src("src/sass/*.sass")
-        .pipe(concat('styles.sass'))
+    return gulp.src("src/sass/*.scss")
+        .pipe(concat('styles.scss'))
         .pipe(sass().on('error', sass.logError))
         .pipe(rename({ suffix: '.min' }))
         .pipe(gulp.dest("dist/css"));
@@ -43,13 +44,23 @@ gulp.task("scripts", function () {
 
 // стискання зображень
 gulp.task('imgs', function () {
-    return gulp.src("src/images/*.+(jpg|jpeg|png|gif)")
+    return gulp.src("src/images/*.+(jpg|jpeg|png|gif)", {
+        encoding: false,
+    })
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{ removeViewBox: false }],
             interlaced: true
         }))
         .pipe(gulp.dest("dist/images"));
+});
+
+gulp.task('browser-sync', function () {
+    browserSync.init({
+        server: {
+            baseDir: "dist/"
+        }
+    })
 });
 
 // відстежування за змінами у файлах
@@ -62,3 +73,10 @@ gulp.task("watch", function () {
 
 // Запуск тасків за замовчуванням
 gulp.task("default", gulp.parallel("html", "sass", "scripts", "imgs", "watch"));
+
+exports.default = gulp.series(gulp.series("default"));
+exports.sass = gulp.series(gulp.series("sass"));
+exports.scripts = gulp.series(gulp.series("scripts"));
+exports.imgs = gulp.series(gulp.series("imgs"));
+exports.watch = gulp.series(gulp.series("watch"));
+exports.browserSync = gulp.series(gulp.series("browser-sync"));
