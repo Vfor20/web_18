@@ -29,7 +29,7 @@ gulp.task("sass", function () {
     return gulp.src("src/sass/*.scss")
         .pipe(concat('styles.scss'))
         .pipe(sass().on('error', sass.logError))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(rename( 'styles.min.css'))
         .pipe(gulp.dest("dist/css"));
 });
 
@@ -67,7 +67,7 @@ gulp.task('browser-sync', function () {
 gulp.task("watch", function () {
     gulp.watch("src/*.html", gulp.series("html"));
     gulp.watch("src/js/*.js", gulp.series("scripts"));
-    gulp.watch("src/sass/*.sass", gulp.series("sass"));
+    gulp.watch("src/sass/*.scss", gulp.series("sass"));
     gulp.watch("src/images/*.+(jpg|jpeg|png|gif)", gulp.series("imgs"));
 });
 
