@@ -34,7 +34,7 @@
             background-color: white;
         }
         .profile-image {
-            max-width: 240px; /* Maximum width for the image */
+            max-width: 245px; /* Maximum width for the image */
             height: auto; /* Maintain aspect ratio */
             margin-left: auto; /* Push the image to the right */
             margin-right: 0; /* Remove right margin */
@@ -61,7 +61,17 @@
             display: inline-block;
             padding: 2px 8px;
             border-radius: 5px;
+            color: #22222d;
             font-size: 16.5px;
+            font-weight: 500
+        }
+        .yellow-background-main-section
+        {
+            background-color: var(--bright-yellow);
+            padding: 2px 6px;
+            border-radius: 5px;
+            color: #22222d;
+            font-size: 14px;
             font-weight: 500
         }
         .color-left {
@@ -73,7 +83,11 @@
             background-color: #22222e;
             color: white;
         }
-
+        .main-text
+        {
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+        }
 
         .highlight {
             color: #232438; /* Bright yellow for highlighted text */
@@ -117,12 +131,12 @@
             </div>
         </div>
         <div class="col-md-8">
-            <div class="profile-container" style="margin-top: 30px">
+            <div class="profile-container" style="margin-top: 40px">
                 <h1 class="name-style"><span class="highlight">Mathew</span> Smith</h1>
                 <h6 class="yellow-background">Graphic & Web Designer</h6>
                 <h5 style="margin-top: 2px;"></h5>
                 <h6 class="section-title" style="color: #22222d; margin-top: 20px">Profile</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p style="font-family: Montserrat, sans-serif; font-size: 14px; width: 400px; text-align-last: left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
         </div>
     </div>
@@ -159,8 +173,12 @@
                 <div class="section-container">
                     <h4 class="section-title">Work Experience</h4>
                     <p><strong>Enter Job Position Here</strong></p>
-                    <p>Present Company Name/Location</p>
-                    <p><strong>Enter Job Position Here</strong><br>Company ABC<br>2016-2020</p>
+                    <p><span class="yellow-background-main-section"> Present</span> Company Name/Location</p>
+                    <p class="main-text">Lorem ipsum dolor sit amet, this is a thena  consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
+                    <br>
+                    <p><strong>Enter Job Position Here</strong></p>
+                    <p><span class="yellow-background-main-section"> 2015-2017</span> Company Name/Location</p>
+                    <p class="main-text">Lorem ipsum dolor sit amet, this is a thena  consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore </p>
                 </div>
                 <div class="section-container">
                     <h4 class="section-title">Reference</h4>
